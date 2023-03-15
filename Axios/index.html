@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>axios example</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <script>
+    const data = JSON.stringify({
+      prompt: "Why serverless?"
+    });
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://7tbjuulkmj.execute-api.us-east-1.amazonaws.com/Prod/answer",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      data: data
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  </script>
+</body>
+</html>
